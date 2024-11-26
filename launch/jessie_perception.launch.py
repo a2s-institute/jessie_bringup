@@ -10,24 +10,23 @@ from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
     left_camera_name = LaunchConfiguration('left_camera_name', default='left_camera')
-    left_camera_serial_number = LaunchConfiguration('left_camera_serial_number', default='108322074116')
-    left_camera_usb_port_id = LaunchConfiguration('left_camera_serial_number', default='2-2.2')
+    left_camera_serial_number = LaunchConfiguration('left_camera_serial_number', default='_108322074116')
     right_camera_name = LaunchConfiguration('right_camera_name', default='right_camera')
-    right_camera_serial_number = LaunchConfiguration('right_camera_serial_number', default='049322070507')
-    right_camera_usb_port_id = LaunchConfiguration('right_camera_serial_number', default='2-2.4')
+    right_camera_serial_number = LaunchConfiguration('right_camera_serial_number', default='_049322070507')
     reset_cameras_on_startup = LaunchConfiguration('reset_cameras_on_startup', default=False)
-    camera_colour_stream_profile = LaunchConfiguration('camera_colour_stream_profile', default='640x480x15')
-    depth_stream_profile = LaunchConfiguration('depth_stream_profile', default='640x480x15')
+    enable_depth = LaunchConfiguration('enable_depth', default=False)
+    camera_colour_stream_profile = LaunchConfiguration('camera_colour_stream_profile', default='640,480,15')
+    depth_stream_profile = LaunchConfiguration('depth_stream_profile', default='640,480,15')
 
     left_realsense_camera_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(PathJoinSubstitution([FindPackageShare('realsense2_camera'), 'launch', 'rs_launch.py'])),
         launch_arguments={
             'camera_name': left_camera_name,
-            'serial_no': str(left_camera_serial_number)
-            #'usb_port_id': left_camera_usb_port_id,
+            'serial_no': left_camera_serial_number,
             'initial_reset': reset_cameras_on_startup,
-            'rgb_camera.profile': camera_colour_stream_profile,
-            'depth_module.profile': depth_stream_profile
+            'rgb_camera.color_profile': camera_colour_stream_profile,
+            'enable_depth': enable_depth,
+            'depth_module.depth_profile': depth_stream_profile
         }.items(),
     )
 
@@ -35,11 +34,11 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(PathJoinSubstitution([FindPackageShare('realsense2_camera'), 'launch', 'rs_launch.py'])),
         launch_arguments={
             'camera_name': right_camera_name,
-            'serial_no': str(right_camera_serial_number)
-            #'usb_port_id': right_camera_usb_port_id,
+            'serial_no': right_camera_serial_number,
             'initial_reset': reset_cameras_on_startup,
-            'rgb_camera.profile': camera_colour_stream_profile,
-            'depth_module.profile': depth_stream_profile
+            'rgb_camera.color_profile': camera_colour_stream_profile,
+            'enable_depth': enable_depth,
+            'depth_module.depth_profile': depth_stream_profile
         }.items(),
     )
 
