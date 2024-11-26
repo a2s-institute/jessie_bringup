@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
-# Software License Agreement (BSD License)
+# Adapted from a UFACTORY xarm launch
 #
-# Copyright (c) 2021, UFACTORY, Inc.
-# All rights reserved.
-#
-# Author: Vinman <vinman.wen@ufactory.cc> <vinman.cub@gmail.com>
+# Author: Alex Mitrevski, Ayush Salunke
 
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument
