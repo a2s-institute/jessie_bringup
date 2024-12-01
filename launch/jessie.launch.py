@@ -21,8 +21,11 @@ def generate_launch_description():
     limited = LaunchConfiguration('limited', default=False)
     effort_control = LaunchConfiguration('effort_control', default=False)
     velocity_control = LaunchConfiguration('velocity_control', default=False)
-    add_gripper = LaunchConfiguration('add_gripper', default=False)
-    add_vacuum_gripper = LaunchConfiguration('add_vacuum_gripper', default=False)
+
+    left_arm_add_gripper = LaunchConfiguration('left_arm_add_gripper', default=True)
+    left_arm_add_vacuum_gripper = LaunchConfiguration('left_arm_add_vacuum_gripper', default=False)
+    right_arm_add_gripper = LaunchConfiguration('right_arm_add_gripper', default=True)
+    right_arm_add_vacuum_gripper = LaunchConfiguration('right_arm_add_vacuum_gripper', default=True)
 
     add_realsense_d435i = LaunchConfiguration('add_realsense_d435i', default=False)
 
@@ -49,8 +52,8 @@ def generate_launch_description():
             'limited': limited,
             'effort_control': effort_control,
             'velocity_control': velocity_control,
-            'add_gripper': add_gripper,
-            'add_vacuum_gripper': add_vacuum_gripper,
+            'add_gripper': left_arm_add_gripper,
+            'add_vacuum_gripper': left_arm_add_vacuum_gripper,
             'dof': '6',
             'robot_type': 'xarm',
             'add_realsense_d435i': add_realsense_d435i,
@@ -79,8 +82,8 @@ def generate_launch_description():
             'limited': limited,
             'effort_control': effort_control,
             'velocity_control': velocity_control,
-            'add_gripper': add_gripper,
-            'add_vacuum_gripper': add_vacuum_gripper,
+            'add_gripper': right_arm_add_gripper,
+            'add_vacuum_gripper': right_arm_add_vacuum_gripper,
             'dof': '6',
             'robot_type': 'xarm',
             'add_realsense_d435i': add_realsense_d435i,
