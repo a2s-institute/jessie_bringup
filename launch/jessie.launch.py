@@ -13,7 +13,7 @@ from launch_ros.substitutions import FindPackageShare
 def generate_launch_description():
     left_arm_ip = LaunchConfiguration('left_arm_ip', default="192.168.1.204")
     right_arm_ip = LaunchConfiguration('right_arm_ip', default="192.168.1.209")
-    report_type = LaunchConfiguration('report_type', default='normal')
+    report_type = LaunchConfiguration('report_type', default='dev')
     
     left_arm_prefix = LaunchConfiguration('left_arm_prefix', default='left_arm_')
     right_arm_prefix = LaunchConfiguration('right_arm_prefix', default='right_arm_')
